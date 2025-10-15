@@ -1,0 +1,14 @@
+indexes:
+
+# Índice necessário para a tua query
+- kind: Operation
+  ancestor: yes
+  properties:
+  - name: order        # campo usado no orderBy()
+    direction: asc     # troca para desc se for esse o caso
+
+- kind: Notification
+  properties:
+  - name: userId
+  - name: timestamp
+    direction: desc
