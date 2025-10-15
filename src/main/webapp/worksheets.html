@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worksheet Management - Trailblaze</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="worksheets.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="logo.png" alt="Trailblaze Logo" class="logo">
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h3>Navigation</h3>
+                    <a href="dashboard.html" class="nav-item">
+                        <span class="icon">🏠</span>
+                        Dashboard
+                    </a>
+                    <a href="#" class="nav-item active">
+                        <span class="icon">📋</span>
+                        Worksheets
+                    </a>
+                    <a href="execution-sheets.html" class="nav-item" id="execution-sheets-nav">
+                        <span class="icon">⚡</span>
+                        Execution Sheets
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <span id="user-initial">U</span>
+                    </div>
+                    <div class="user-details">
+                        <span id="username-display">Username</span>
+                        <span id="user-role" class="user-role">Role</span>
+                    </div>
+                </div>
+                <button id="logout-btn" class="logout-btn">Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Worksheet Management</h1>
+                <div class="header-actions">
+                    <button class="btn-primary" id="import-worksheet-btn" style="display: none;">Import Worksheet</button>
+                    <button class="btn-secondary" id="refresh-btn">Refresh</button>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <!-- Quick Actions -->
+                <section class="actions-section">
+                    <div class="actions-grid">
+                        <div class="action-card" id="import-action" style="display: none;">
+                            <div class="action-icon">📥</div>
+                            <h4>Import Worksheet</h4>
+                            <p>Import a new worksheet from GeoJSON file</p>
+                            <button class="action-btn" onclick="showImportModal()">Import</button>
+                        </div>
+                        <div class="action-card">
+                            <div class="action-icon">🔍</div>
+                            <h4>Search Worksheets</h4>
+                            <p>Search and filter existing worksheets</p>
+                            <button class="action-btn" onclick="showSearchSection()">Search</button>
+                        </div>
+                        <div class="action-card" id="detailed-view-action" style="display: none;">
+                            <div class="action-icon">📊</div>
+                            <h4>Detailed View</h4>
+                            <p>View detailed worksheet information including geometry</p>
+                            <button class="action-btn" onclick="showDetailedSearch()">View Details</button>
+                        </div>
+                        <div class="action-card" id="edit-action" style="display: none;">
+                            <div class="action-icon">✏️</div>
+                            <h4>Edit Worksheet</h4>
+                            <p>Modify existing worksheet information</p>
+                            <button class="action-btn" onclick="showEditModal()">Edit</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Search Section -->
+                <section class="search-section" id="search-section" style="display: none;">
+                    <div class="section-header">
+                        <h2>Search Worksheets</h2>
+                        <div class="search-controls">
+                            <select id="search-type">
+                                <option value="basic">Basic Search</option>
+                                <option value="detailed" style="display: none;">Detailed Search</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="search-filters">
+                        <div class="filter-row">
+                            <div class="form-group">
+                                <label for="filter-start-date">Start Date</label>
+                                <input type="date" id="filter-start-date">
+                            </div>
+                            <div class="form-group">
+                                <label for="filter-end-date">End Date</label>
+                                <input type="date" id="filter-end-date">
+                            </div>
+                            <div class="form-group">
+                                <label for="filter-service-provider">Service Provider ID</label>
+                                <input type="number" id="filter-service-provider">
+                            </div>
+                            <div class="form-group">
+                                <label for="filter-posa-code">POSA Code</label>
+                                <input type="text" id="filter-posa-code">
+                            </div>
+                        </div>
+                        <div class="filter-actions">
+                            <button class="btn-primary" onclick="performSearch()">Search</button>
+                            <button class="btn-secondary" onclick="clearFilters()">Clear</button>
+                        </div>
+                    </div>
+
+                    <div class="search-results" id="search-results">
+                        <!-- Search results will be displayed here -->
+                    </div>
+                </section>
+
+                <!-- Worksheet Details Section -->
+                <section class="details-section" id="details-section" style="display: none;">
+                    <div class="section-header">
+                        <h2>Worksheet Details</h2>
+                        <div class="detail-actions">
+                            <button class="btn-secondary" id="edit-current-btn" style="display: none;" onclick="editCurrentWorksheet()">Edit</button>
+                            <button class="btn-danger" id="delete-current-btn" style="display: none;" onclick="deleteCurrentWorksheet()">Delete</button>
+                            <button class="btn-secondary" onclick="hideDetailsSection()">Close</button>
+                        </div>
+                    </div>
+                    
+                    <div class="worksheet-details" id="worksheet-details">
+                        <!-- Worksheet details will be displayed here -->
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modal-title">Modal Title</h3>
+                <button id="modal-close" class="modal-close">×</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Modal content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+    </div>
+
+    <div id="message" class="message hidden">
+        <div class="message-content">
+            <span id="message-text"></span>
+            <button id="close-message">×</button>
+        </div>
+    </div>
+
+    <script src="worksheets.js"></script>
+</body>
+</html>

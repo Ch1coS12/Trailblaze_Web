@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Trailblaze</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="logo.png" alt="Trailblaze Logo" class="logo">
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h3>General</h3>
+                    <a href="#" class="nav-item active" data-section="overview">
+                        <span class="icon">📊</span>
+                        Overview
+                    </a>
+                    <a href="#" class="nav-item" data-section="profile">
+                        <span class="icon">👤</span>
+                        My Info
+                    </a>
+					<a href="userpage.html" class="nav-item">
+                        <span class="icon">🏠</span>
+                        User Page
+                    </a>
+                    <!-- Worksheets Management - Role-based visibility -->
+                    <a href="worksheets.html" class="nav-item" id="worksheets-nav" style="display: none;">
+                        <span class="icon">📋</span>
+                        Worksheets
+                    </a>
+                    <!-- Execution Sheets Management - Role-based visibility -->
+                    <a href="execution-sheets.html" class="nav-item" id="execution-sheets-nav" style="display: none;">
+                        <span class="icon">⚡</span>
+                        Execution Sheets
+                    </a>
+					
+					<a href="events.html" class="nav-item" id="events-nav">
+					                       <span class="icon">🎉</span>
+					                       Events
+					                   </a>
+									   
+                </div>
+
+                <div class="nav-section" id="admin-section" style="display: none;">
+                    <h3>Administration</h3>
+                    <a href="#" class="nav-item" data-section="users">
+                        <span class="icon">👥</span>
+                        User Management
+                    </a>
+                    <a href="#" class="nav-item" data-section="accounts">
+                        <span class="icon">⚙️</span>
+                        Account Operations
+                    </a>
+                    <a href="#" class="nav-item" data-section="sessions">
+                        <span class="icon">🔐</span>
+                        Session Management
+                    </a>
+                    <a href="#" class="nav-item" data-section="reports">
+                        <span class="icon">📈</span>
+                        Reports & Analytics
+                    </a>
+                </div>
+
+                <div class="nav-section" id="user-section">
+                    <h3>User Actions</h3>
+                    <a href="#" class="nav-item" data-section="request-removal">
+                        <span class="icon">🗑️</span>
+                        Request Account Removal
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <span id="user-initial">U</span>
+                    </div>
+                    <div class="user-details">
+                        <span id="username-display">Username</span>
+                        <span id="user-role" class="user-role">Role</span>
+                    </div>
+                </div>
+                <button id="logout-btn" class="logout-btn">Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1 id="page-title">Overview</h1>
+                <div class="header-actions">
+                    <button id="notif-btn" class="btn-secondary" style="display: none;">
+                        🔔 Notificações <span id="notif-badge" class="badge hidden">0</span></button>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <!-- Overview Section -->
+                <section id="overview-section" class="content-section active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">👤</div>
+                            <div class="stat-info">
+                                <h3>Profile Status</h3>
+                                <p id="profile-status">Loading...</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🔐</div>
+                            <div class="stat-info">
+                                <h3>Account State</h3>
+                                <p id="account-state">Loading...</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⏰</div>
+                            <div class="stat-info">
+                                <h3>Last Login</h3>
+                                <p id="last-login">Now</p>
+                            </div>
+                        </div>
+                        <div class="stat-card" id="admin-stats" style="display: none;">
+                            <div class="stat-icon">📊</div>
+                            <div class="stat-info">
+                                <h3>Total Users</h3>
+                                <p id="total-users">Loading...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Worksheets Quick Actions - Role-based visibility -->
+                    <div class="operations-grid" id="worksheets-actions" style="display: none; margin-top: 40px;">
+                        <div class="operation-card">
+                            <h3>📋 Worksheets</h3>
+                            <p>Manage worksheets and planned operations</p>
+                            <button class="btn-primary" onclick="window.location.href='worksheets.html'">
+                                Manage Worksheets
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Execution Sheets Quick Actions - Role-based visibility -->
+                    <div class="operations-grid" id="execution-sheets-actions" style="display: none; margin-top: 40px;">
+                        <div class="operation-card">
+                            <h3>⚡ Execution Sheets</h3>
+                            <p>Manage execution sheets and operations</p>
+                            <button class="btn-primary" onclick="window.location.href='execution-sheets.html'">
+                                Manage Execution Sheets
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Profile Section -->
+                <section id="profile-section" class="content-section">
+                    <div class="profile-card">
+                        <h2>My Info</h2>
+                        <form id="profile-form" class="profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="profile-fullName">Full Name</label>
+                                    <input type="text" id="profile-fullName" name="fullName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="profile-phone">Phone</label>
+                                    <input type="tel" id="profile-phone" name="phone">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="profile-address">Address</label>
+                                <textarea id="profile-address" name="address" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="profile-nationality">Nationality</label>
+                                    <input type="text" id="profile-nationality" name="nationality">
+                                </div>
+                                <div class="form-group">
+                                    <label for="profile-residenceCountry">Residence Country</label>
+                                    <input type="text" id="profile-residenceCountry" name="residenceCountry">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="profile-nif">NIF</label>
+                                    <input type="text" id="profile-nif" name="nif">
+                                </div>
+                                <div class="form-group">
+                                    <label for="profile-cc">CC</label>
+                                    <input type="text" id="profile-cc" name="cc">
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" id="toggle-profile-btn" class="btn-secondary">Toggle Profile Visibility</button>
+                                <button type="submit" class="btn-primary">Update Profile</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Users Section (Admin only) -->
+                <section id="users-section" class="content-section">
+                    <div class="section-header">
+                        <h2>User Management</h2>
+                        <button class="btn-primary" id="create-user-btn">Create Institutional User</button>
+                    </div>
+                    
+                    <div class="filters">
+                        <select id="user-filter">
+                            <option value="all">All Users</option>
+                            <option value="RU">Regular Users (RU)</option>
+                            <option value="SYSADMIN">System Admins</option>
+                            <option value="SYSBO">System Operators</option>
+                            <option value="SMBO">SM Operators</option>
+                            <option value="SGVBO">SGV Operators</option>
+                            <option value="SDVBO">SDV Operators</option>
+                            <option value="PRBO">PR Operators</option>
+                            <option value="PO">Partners</option>
+                            <option value="ADLU">Advanced Users</option>
+                        </select>
+                        <select id="state-filter">
+                            <option value="">All States</option>
+                            <option value="ATIVADA">Active</option>
+                            <option value="INATIVO">Inactive</option>
+                            <option value="DESATIVADA">Deactivated</option>
+                            <option value="SUSPENSA">Suspended</option>
+                            <option value="A_REMOVER">To Remove</option>
+                        </select>
+                        <select id="profile-filter">
+                            <option value="">All Profiles</option>
+                            <option value="PUBLICO">Public</option>
+                            <option value="PRIVADO">Private</option>
+                        </select>
+                        <button class="btn-secondary" id="load-users-btn">Load Users</button>
+                    </div>
+
+                    <div class="users-list" id="users-list">
+                        <!-- Users will be loaded here -->
+                    </div>
+                </section>
+
+                <!-- Account Operations Section (Admin only) -->
+                <section id="accounts-section" class="content-section">
+                    <div class="operations-grid">
+                        <div class="operation-card">
+                            <h3>Activate Account</h3>
+                            <p>Activate a user account</p>
+                            <button class="btn-primary" data-operation="activate">Activate</button>
+                        </div>
+                        <div class="operation-card">
+                            <h3>Deactivate Account</h3>
+                            <p>Deactivate a user account</p>
+                            <button class="btn-warning" data-operation="deactivate">Deactivate</button>
+                        </div>
+                        <div class="operation-card">
+                            <h3>Suspend Account</h3>
+                            <p>Temporarily suspend a user account</p>
+                            <button class="btn-warning" data-operation="suspend">Suspend</button>
+                        </div>
+                        <div class="operation-card">
+                            <h3>Remove Account</h3>
+                            <p>Permanently remove a user account</p>
+                            <button class="btn-danger" data-operation="remove">Remove</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sessions Section (Admin only) -->
+                <section id="sessions-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Session Management</h2>
+                        <button class="btn-secondary" id="load-sessions-btn">Load Active Sessions</button>
+                    </div>
+                    
+                    <div class="sessions-list" id="sessions-list">
+                        <!-- Sessions will be loaded here -->
+                    </div>
+                </section>
+
+                <!-- Reports Section (Admin only) -->
+                <section id="reports-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Reports & Analytics</h2>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-info">
+                                <h3>Active Users</h3>
+                                <p id="active-users-count">Loading...</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⏸️</div>
+                            <div class="stat-info">
+                                <h3>Inactive Users</h3>
+                                <p id="inactive-users-count">Loading...</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🚫</div>
+                            <div class="stat-info">
+                                <h3>Suspended Users</h3>
+                                <p id="suspended-users-count">Loading...</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🔐</div>
+                            <div class="stat-info">
+                                <h3>Active Sessions</h3>
+                                <p id="active-sessions-count">Loading...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-card">
+                        <h3>User Distribution by Role</h3>
+                        <div id="role-distribution">
+                            <!-- Role distribution will be loaded here -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Request Removal Section -->
+                <section id="request-removal-section" class="content-section">
+                    <div class="profile-card">
+                        <h2>Request Account Removal</h2>
+                        <p>If you wish to permanently delete your account, you can request removal. This action will mark your account for deletion by an administrator.</p>
+                        <div class="form-actions">
+                            <button id="request-removal-btn" class="btn-danger">Request Account Removal</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modal-title">Modal Title</h3>
+                <button id="modal-close" class="modal-close">×</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Modal content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Reutilizável -->
+    <div id="notif-modal" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Minhas Notificações</h3>
+                <button id="notif-close-btn" class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" id="notif-body">Carregando...</div>
+            <div class="modal-footer">
+                <button id="notif-footer-close" class="btn-secondary">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+    </div>
+
+    <div id="message" class="message hidden">
+        <div class="message-content">
+            <span id="message-text"></span>
+            <button id="close-message">×</button>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

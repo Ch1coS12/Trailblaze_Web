@@ -1,0 +1,70 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(135deg, #4f695B 0%, #7f9e8e 100%);
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 40px 20px;
+    z-index: 10;
+}
+
+.logo img {
+    height: 95px;
+    width: auto;
+}
+
+nav {
+    margin-left: auto;
+    display: flex;
+    gap: 30px;
+    margin-top: 8px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #F5F5DC;
+    font-weight: bold;
+    font-size: 16px;
+    transition: opacity 0.25s;
+}
+
+nav a:hover {
+    opacity: 0.8;
+}
+
+.map-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 150px;
+    padding-bottom: 40px;
+}
+
+#map {
+    height: 70vh;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	}
+
+	.controls {
+	    display: flex;
+	    justify-content: center;
+	    margin-top: 120px;
+	}
+
+	#worksheet-select {
+	    padding: 8px 12px;
+	    border: 2px solid #e0e0e0;
+	    border-radius: 4px;
+	    font-size: 16px;
+	    font-family: inherit;
+		}

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Page - Trailblaze</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="userpage.css">
+</head>
+<body>
+    <div class="userpage-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="logo.png" alt="Trailblaze Logo">
+                </div>
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <span id="user-initial">U</span>
+                    </div>
+                    <div class="user-details">
+                        <span id="username-display">Username</span>
+                        <span id="user-role" class="user-role">Role</span>
+                    </div>
+                    <button id="logout-btn" class="logout-btn">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-card">
+                    <h1>Welcome, <span id="welcome-username">User</span>!</h1>
+                    <p>Manage your account and explore available features based on your role.</p>
+                </div>
+            </section>
+
+            <!-- Quick Stats -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">👤</div>
+                        <div class="stat-info">
+                            <h3>Profile Status</h3>
+                            <p id="profile-status">Loading...</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔐</div>
+                        <div class="stat-info">
+                            <h3>Account State</h3>
+                            <p id="account-state">Loading...</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-info">
+                            <h3>Role</h3>
+                            <p id="role-display">Loading...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Actions Section -->
+            <section class="actions-section">
+                <h2>Available Actions</h2>
+                <div class="actions-wrapper">
+                	<!-- Common Actions for All Users -->
+                	<div class="actions-category">
+                    	<h3>Profile Management</h3>
+                    	<div class="actions-grid">
+                        	<div class="action-card">
+                            	<div class="action-icon">✏️</div>
+                            	<h4>Update Profile</h4>
+                            	<p>Update your personal information and preferences</p>
+                            	<button class="action-btn" onclick="showUpdateProfileModal()">Update</button>
+                        	</div>
+                        	<div class="action-card">
+                            	<div class="action-icon">👁️</div>
+                            	<h4>Toggle Profile Visibility</h4>
+                            	<p>Change your profile visibility between public and private</p>
+                            	<button class="action-btn" onclick="toggleProfileVisibility()">Toggle</button>
+                        	</div>
+                        	<div class="action-card">
+                            	<div class="action-icon">⚙️</div>
+                            	<h4>More Options</h4>
+                            	<p>Access additional settings in the dashboard</p>
+                            	<button class="action-btn" onclick="window.location.href='dashboard.html'">More Options</button>
+                        	</div>
+                        	<div class="action-card">
+                            	<div class="action-icon">🗑️</div>
+                            	<h4>Request Account Removal</h4>
+                            	<p>Request permanent deletion of your account</p>
+                            	<button class="action-btn btn-danger" onclick="requestAccountRemoval()">Request</button>
+                        	</div>
+                    	</div>
+                	</div>
+
+					<!-- Role Based Actions -->
+					<div class="actions-category" id="your-actions" style="display: none;">
+						<h3>Your Actions</h3>
+						<div class="actions-grid">
+							<!-- Worksheets -->
+							<div class="action-card" id="access-worksheets-card">
+								<div class="action-icon">📋</div>
+								<h4>Access Worksheets</h4>
+								<p>View and manage worksheets and planned operations</p>
+								<button class="action-btn" onclick="window.location.href='worksheets.html'">Access</button>
+							</div>
+
+							<!-- Execution Sheets -->
+							<div class="action-card" id="access-execution-sheets-card">
+								<div class="action-icon">⚡</div>
+								<h4>Access Execution Sheets</h4>
+								<p>View and manage execution sheets and operations</p>
+								<button class="action-btn" onclick="window.location.href='execution-sheets.html'">Access</button>
+							</div>
+
+							<!-- Activities -->
+							<div class="action-card" id="access-activities-card">
+								<div class="action-icon">▶️</div>
+								<h4>Access Activities</h4>
+								<p>Start/Stop/Review parcel activities</p>
+								<button class="action-btn" onclick="window.location.href='execution-sheets.html'">Access</button>
+							</div>
+
+							<!-- Advanced User -->
+							<div class="action-card" id="advanced-settings-card" style="display: none;">
+								<div class="action-icon">⚙️</div>
+								<h4>Advanced Settings</h4>
+								<p>Access advanced user configuration options</p>
+								<button class="action-btn" onclick="showAdvancedSettings()">Configure</button>
+							</div>
+						</div>
+					</div>
+
+                	<!-- Admin Actions (SYSADMIN/SYSBO only) -->
+                	<div class="actions-category" id="admin-actions" style="display: none;">
+                    	<h3>Administrative Actions</h3>
+                    	<div class="actions-grid">
+                        	<div class="action-card">
+                            	<div class="action-icon">👥</div>
+                            	<h4>User Management</h4>
+                            	<p>View and manage user accounts</p>
+                            	<button class="action-btn" onclick="window.location.href='dashboard.html'">Manage</button>
+                        	</div>
+                        	<div class="action-card">
+                            	<div class="action-icon">➕</div>
+                            	<h4>Create Institutional User</h4>
+                            	<p>Create new institutional user accounts</p>
+                            	<button class="action-btn" onclick="showCreateUserModal()">Create</button>
+                        	</div>
+                        	<div class="action-card">
+                            	<div class="action-icon">🔐</div>
+                            	<h4>Session Management</h4>
+                            	<p>View and manage active user sessions</p>
+                            	<button class="action-btn" onclick="showSessionsModal()">View Sessions</button>
+                        	</div>
+                        	<div class="action-card">
+                            	<div class="action-icon">📊</div>
+                            	<h4>System Reports</h4>
+                            	<p>View system statistics and reports</p>
+                            	<button class="action-btn" onclick="showReportsModal()">View Reports</button>
+                        	</div>
+                    	</div>
+                	</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modal-title">Modal Title</h3>
+                <button id="modal-close" class="modal-close">×</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Modal content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+    </div>
+
+    <div id="message" class="message hidden">
+        <div class="message-content">
+            <span id="message-text"></span>
+            <button id="close-message">×</button>
+        </div>
+    </div>
+
+    <script src="userpage.js"></script>
+</body>
+</html>

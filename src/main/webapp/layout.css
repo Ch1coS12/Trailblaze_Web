@@ -1,0 +1,24 @@
+.sidebar {
+  width: var(--sidebar-width);
+  background: #fff;
+  border-right: 1px solid #e0e0e0;
+  padding: 1rem;
+}
+.sidebar ul {
+  list-style: none;
+  margin-top: 2rem;
+}
+.sidebar a {
+  display: block;
+  padding: .5rem 0;
+  color: #333;
+  text-decoration: none;
+}
+.sidebar a:hover {
+  color: var(--primary);
+}
+main#app {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+}

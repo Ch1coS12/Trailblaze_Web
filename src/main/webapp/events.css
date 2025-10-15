@@ -1,0 +1,118 @@
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.event-card {
+  background: #f8f9fa;
+  border: 2px solid #e0e6ed;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.event-card h3 {
+  margin-top: 0;
+}
+
+.event-card .action-btn {
+  margin-top: 10px;
+}
+
+/* Generic action button used in modals */
+.action-btn {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #4f695B 0%, #7f9e8e 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(79, 105, 91, 0.3);
+}
+
+.registrations-btn{
+  background:#21562d;   /* verde escuro */
+  color:#fff;
+  font-size:15px;       /* ligeiramente maior */
+  padding:12px 24px;    /* idem */
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  transition:.2s;
+}
+.registrations-btn:hover{filter:brightness(1.1);}
+
+.register-btn{
+  background:#21562d;
+  color:#fff;
+  font-size:15px;
+  padding:12px 24px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  transition:.2s;
+}
+.register-btn:hover{filter:brightness(1.1);}
+
+.register-btn:hover{filter:brightness(1.1);}
+
+/* ---------------- BOTÕES PRINCIPAIS (Edit / Delete / Update) ---------------- */
+
+/* Tamanho e forma em comum */
+.btn-edit,
+.btn-delete,
+.btn-update {
+  padding: 14px 32px;          /* maior que antes */
+  font-size: 16px;             /* texto um pouco maior */
+  border: 2px solid currentColor; /* contorno – cor será sobrescrita logo abaixo */
+  border-radius: 10px;         /* cantos arredondados */
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+/* ------------------- EDIT ------------------- */
+.btn-edit {
+  background: linear-gradient(135deg, #4f695B 0%, #3d5347 100%);
+  border-color: #3d5347;       /* mesmo tom do fim do gradient */
+  color: #fff;
+}
+
+.btn-edit:hover {
+  background: linear-gradient(135deg, #3d5347 0%, #2a3a2f 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(79, 105, 91, .35);
+}
+
+/* ------------------- DELETE ------------------- */
+.btn-delete {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  border-color: #c82333;
+  color: #fff;
+}
+
+.btn-delete:hover {
+  background: linear-gradient(135deg, #c82333 0%, #a71e2a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(220, 53, 69, .35);
+}
+
+/* ------------------- UPDATE (caso precise) ------------------- */
+.btn-update {
+  background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+  border-color: #0a58ca;
+  color: #fff;
+}
+
+.btn-update:hover {
+  background: linear-gradient(135deg, #0a58ca 0%, #084298 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(13, 110, 253, .35);
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registo - Trailblaze</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <div class="container">
+        <div class="register-card">
+            <div class="logo-section">
+                <img src="logo.png" alt="Trailblaze Logo" class="logo">
+                <h1>Join Trailblaze</h1>
+                <p>Create your account to start exploring</p>
+            </div>
+
+            <form id="register-form" class="register-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username">Username *</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">Password *</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password *</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea id="address" name="address" rows="3"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nif">NIF</label>
+                        <input type="text" id="nif" name="nif">
+                    </div>
+                    <div class="form-group">
+                        <label for="cc">CC</label>
+                        <input type="text" id="cc" name="cc">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nationality">Nationality</label>
+                        <input type="text" id="nationality" name="nationality">
+                    </div>
+                    <div class="form-group">
+                        <label for="residenceCountry">Residence Country</label>
+                        <input type="text" id="residenceCountry" name="residenceCountry">
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="isPublic">
+                        <span class="checkmark"></span>
+                        Make my profile public
+                    </label>
+                </div>
+
+                <button type="submit" class="register-btn">Create Account</button>
+            </form>
+
+            <div class="divider">
+                <span>or</span>
+            </div>
+
+            <div class="login-section">
+                <p>Already have an account?</p>
+                <a href="login.html" class="login-link">Sign In</a>
+            </div>
+
+            <div class="back-home">
+                <a href="homepage.html">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+    </div>
+
+    <div id="message" class="message hidden">
+        <div class="message-content">
+            <span id="message-text"></span>
+            <button id="close-message">×</button>
+        </div>
+    </div>
+
+    <script src="register.js"></script>
+</body>
+</html>
