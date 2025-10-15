@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Events - Discover Amazing Experiences · Trailblaze</title>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto+Condensed:wght@700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="eventsweb.css">
   <script src="https://cdn.jsdelivr.net/npm/proj4@2.11.0/dist/proj4.js"></script>
   <script>
-  (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set(),e=new URLSearchParams(),u=()=>h||(h=new Promise(async(f,n)=>{a=m.createElement("script");e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps.__ib__");a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d.__ib__=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a);}));d[l]?console.warn(p+" only loads once. Ignoring:",g):(d[l]=(f,...n)=>(r.add(f),u().then(()=>d[l](f,...n))));})({key:"",v:"weekly"});
+    (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set(), e = new URLSearchParams(), u = () => h || (h = new Promise(async (f, n) => { a = m.createElement("script"); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps.__ib__"); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d.__ib__ = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a); })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : (d[l] = (f, ...n) => (r.add(f), u().then(() => d[l](f, ...n)))); })({ key: "REMOVED_GOOGLE_API_KEY", v: "weekly" });
   </script>
 </head>
+
 <body>
   <!-- HEADER -->
   <header id="header">
@@ -33,7 +37,7 @@
       <p class="hero-subtitle">
         Join exciting community events and explore territorial activities happening near you
       </p>
-      
+
     </div>
     <div class="scroll-indicator" onclick="scrollToEvents()">
       <div class="scroll-arrow"></div>
@@ -47,11 +51,12 @@
       <div class="section-header">
         <h2 class="section-title">Upcoming Events</h2>
         <p class="section-subtitle">
-          Explore workshops, field activities, and community gatherings designed to connect you with territorial management
+          Explore workshops, field activities, and community gatherings designed to connect you with territorial
+          management
         </p>
       </div>
-      
-     
+
+
     </section>
 
     <div id="events-list"></div>
@@ -71,4 +76,5 @@
 
   <script src="eventsweb.js"></script>
 </body>
+
 </html>
